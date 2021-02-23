@@ -54,7 +54,7 @@ describe('API Endpoint Test', () => {
                 .post('/post/post')
                 .send(params)
                 .end((err, res) => {
-                    res.should.have.status(200);
+                    res.should.have.status(302);
                     done();
                 });
         });

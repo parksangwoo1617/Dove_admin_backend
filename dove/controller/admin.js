@@ -5,7 +5,6 @@ const getPost = async(req, res) => {
         let result = Post.findAll();
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.status(200).json(result);
-        console.log(result);
     } catch(error) {
         return error;
     }
@@ -18,7 +17,6 @@ const getPostDetail = async(req, res) => {
         });
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.status(200).json(result);
-        console.log(result);
     } catch(error) {
         return error;
     }
@@ -33,7 +31,7 @@ const createPost = async(req, res) => {
         event_date: req.body.event_date,
         link: req.body.link,
     });
-    res.status(302).redirect('/post/get');
+    res.status(302);
     res.end();
 }
 
@@ -53,7 +51,6 @@ const updatePost = async(req, res) => {
             return res.status(401).json({ message: "Failed update Post"});
         }
         res.status(302);
-        res.setHeader('Location', '/post/get');
         res.end();
     })
 }
@@ -65,7 +62,7 @@ const deletePost = async(req, res) => {
         } if(!post) {
             return res.status(401).json({ message: "Failed delete Post"});
         }
-        res.status(302).redirect('/post/get');
+        res.status(302);
     });
 };
 

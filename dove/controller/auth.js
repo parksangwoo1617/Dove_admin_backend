@@ -35,14 +35,18 @@ const login = async(req, res) => {
 };
 
 const logout = function(req, res) {
-    res.status(302).redirect('/post/get');
+    res.status(302).json({
+        message: "로그아웃 성공"
+    });
 };
 
 const isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()) {
         next();
     } else {
-        res.status(301).redirect('/user/login');
+        res.status(302).json({
+            message: "로그인이 필요합니다."
+        });
     }
 };
 
