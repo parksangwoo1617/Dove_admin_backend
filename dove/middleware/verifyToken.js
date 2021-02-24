@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   try {  
-      req.decoded = jwt.verify(req.headers.authentication, process.env.JWT_SECRET);
+      req.decoded = jwt.verify(req.headers.authentication.slice(7), process.env.JWT_SECRET);
       return next();
   } catch(err) {
       console.error(err);

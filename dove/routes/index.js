@@ -8,9 +8,8 @@ const errorHandler = require('../middleware/errorHandler');
 
 const loginRouter = (authController.login);
 const logoutRouter = errorHandler(authController.logout);
-const isLoggedIn = authController.isLoggedIn;
 
 router.post('/login', loginRouter);
-router.get('/logout', isLoggedIn, logoutRouter);
+router.get('/logout', verifyToken, checkAdmin, logoutRouter);
 
 module.exports = router;
