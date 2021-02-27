@@ -7,7 +7,6 @@ const session = require('express-session');
 const helmet = require('helmet');
 const hpp = require('hpp');
 const cors = require('cors');
-const RedisStore = require('connect-redis')(session);
 dotenv.config();
 
 const indexRouter = require('./routes/index');
