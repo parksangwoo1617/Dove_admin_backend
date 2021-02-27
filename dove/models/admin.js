@@ -13,7 +13,8 @@ module.exports = class Admin extends Sequelize.Model {
             tableName: "admin",
             modelName: "Admin",
             paranoid: false,
-            charset: "utf8"
+            charset: "utf8",
+            collate: 'utf8_general_ci',
         });
     }
 

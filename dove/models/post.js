@@ -43,7 +43,8 @@ module.exports = class Post extends Sequelize.Model {
             timestamps: false,
             tableName: "tbl_post",
             modelName: "Post",
-            charset: "utf8"
+            charset: "utf8",
+            collate: 'utf8_general_ci'
         });
     }
 
