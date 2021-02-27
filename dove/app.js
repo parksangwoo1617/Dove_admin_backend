@@ -18,7 +18,7 @@ const logger = require('./logger');
 
 const app = express();
 
-app.set('port', process.env.PORT || "8000");
+app.set('port', process.env.PORT || 8000);
 
 sequelize.sync({ force: false })
   .then(() => console.log('데이터 베이스 연결 성공'))
