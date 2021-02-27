@@ -1,18 +1,16 @@
-require('dotenv').config();
-
-module.exports = {
+{
   "development": {
     "username": "root",
-    "password": process.env.PASSWORD,
+    "password": "process.env.PASSWORD",
     "database": "submit_dove",
     "host": "syxxn.cpqlwbmznveu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": false,
-    "logging": true,
+    "logging": true
   },
   "test": {
     "username": "root",
-    "password": process.env.PASSWORD,
+    "password": "process.env.PASSWORD",
     "database": "submit_dove",
     "host": "syxxn.cpqlwbmznveu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
@@ -20,11 +18,11 @@ module.exports = {
   },
   "production": {
     "username": "root",
-    "password": process.env.PASSWORD,
+    "password": "process.env.PASSWORD",
     "database": "submit_dove",
     "host": "syxxn.cpqlwbmznveu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": false,
-    "logging": false,
+    "logging": false
   }
 }
