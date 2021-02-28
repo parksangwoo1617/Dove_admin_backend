@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node app",
     "test": "mocha test/apiTest.js",
-    "start": "cross-env NODE_ENV=production PORT=80 node app.js"
+    "start": "cross-env NODE_ENV=production PORT=8080 node app.js"
   },
   "dependencies": {
     "artillery": "^1.6.2",

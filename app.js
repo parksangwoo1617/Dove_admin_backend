@@ -20,7 +20,7 @@ const { RedisClient } = require('redis');
 
 const app = express();
 
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 8080);
 
 sequelize.sync({ force: false })
   .then(() => console.log('데이터 베이스 연결 성공'))
