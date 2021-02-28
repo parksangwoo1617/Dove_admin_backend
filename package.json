@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node app",
     "test": "mocha test/apiTest.js",
-    "start": "cross-env NODE_ENV=production PORT=8000 pm2 start app.js"
+    "start": "cross-env NODE_ENV=production PORT=8000 node app.js"
   },
   "dependencies": {
     "artillery": "^1.6.2",
@@ -25,7 +25,7 @@
     "helmet": "^4.4.1",
     "hpp": "^0.2.3",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
+    "jade": "^1.9.2",
     "jest": "^26.6.3",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
