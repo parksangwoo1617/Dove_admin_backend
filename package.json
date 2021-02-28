@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node app",
     "test": "mocha test/apiTest.js",
-    "start": "cross-env NODE_ENV=production PORT=8000 node app.js"
+    "start": "cross-env NODE_ENV=production PORT=8000 pm2 start app.js"
   },
   "dependencies": {
     "artillery": "^1.6.2",
@@ -45,7 +45,6 @@
   },
   "description": "Development Dove Web",
   "main": "app.js",
-  "devDependencies": {},
   "author": "parksangwoo",
   "license": "ISC"
 }
