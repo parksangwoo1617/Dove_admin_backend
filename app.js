@@ -6,14 +6,17 @@ const dotenv = require('dotenv');
 const session = require('express-session');
 const helmet = require('helmet');
 const hpp = require('hpp');
+const redis = require('redis');
+const RedisStore = require('connect-redis')(session);
 const cors = require('cors');
-dotenv.config();
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 
 const { sequelize } = require('./models');
 const logger = require('./logger');
+const { RedisClient } = require('redis');
 
 const app = express();
 
@@ -43,11 +46,16 @@ app.use((req, res, next) => {
     return next(); 
   }
 });
+const redisClient = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+const redisConnectionResult = redisClient.auth(process.env.REDIS_PASSWORD, err => {
+  if(err) console.log(err, '에러가 발생했습니다');
+});
+console.log("redis 연결 결과", redisConnectionResult);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-sessionOption = {
+const sessionOption = {
     resave: false,
     saveUninitialized: false,
     secret: process.env.COOKIE_SECRET,
@@ -55,6 +63,13 @@ sessionOption = {
       httpOnly: true,
       secure: false,
     },
+    store: new RedisStore({
+      client: redisClient,
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+      pass: process.env.REDIS_PASSWORD,
+      logErrors: true,
+    }),
 };
 if(process.env.NODE_ENV === 'production') {
   sessionOption.proxy = true;
