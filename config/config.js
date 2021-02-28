@@ -7,7 +7,7 @@ module.exports = {
     "database": "submit_dove",
     "host": "syxxn.cpqlwbmznveu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
-    "operatorsAliases": false,
+    "operatorsAliases": 0,
     "logging": true
   },
   "test": {
@@ -16,7 +16,7 @@ module.exports = {
     "database": "submit_dove",
     "host": "syxxn.cpqlwbmznveu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "operatorsAliases": 0
   },
   "production": {
     "username": "root",
@@ -24,7 +24,7 @@ module.exports = {
     "database": "submit_dove",
     "host": "syxxn.cpqlwbmznveu.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql",
-    "operatorsAliases": false,
+    "operatorsAliases": 0,
     "logging": false
   },
 };
