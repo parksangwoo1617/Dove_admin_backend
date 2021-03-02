@@ -16,7 +16,6 @@ const adminRouter = require('./routes/admin');
 
 const { sequelize } = require('./models');
 const logger = require('./logger');
-const { RedisClient } = require('redis');
 
 const app = express();
 
