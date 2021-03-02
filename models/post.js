@@ -11,7 +11,8 @@ module.exports = class Post extends Sequelize.Model {
             },
             host: {
                 type: Sequelize.STRING(255),
-                allowNull: false
+                allowNull: false,
+                defaultValue: 'admin',
             },
             title: {
                 type: Sequelize.STRING(255),
