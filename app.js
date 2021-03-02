@@ -13,6 +13,8 @@ require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
+const getPost = require('./controller/admin').getPost;
+const errorHandler = require('./middleware/errorHandler');
 
 const { sequelize } = require('./models');
 const logger = require('./logger');
@@ -77,6 +79,7 @@ if(process.env.NODE_ENV === 'production') {
 app.use(session(sessionOption));
 
 app.use('/user', indexRouter);
+app.use('/', errorHandler(getPost));
 app.use('/post', adminRouter);
 
 app.use((req, res, next) => {
