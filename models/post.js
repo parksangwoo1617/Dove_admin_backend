@@ -3,10 +3,7 @@ const Sequelize = require('sequelize');
 module.exports = class Post extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            adminId: {
-                type: Sequelize.STRING,
-                allowNull: true,
-            },
+            
             id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
