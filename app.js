@@ -36,7 +36,7 @@ sequelize.sync({ force: false })
 }
 
 app.use((req, res, next) => {
-  const allowOrigins = [process.env.ALLOW_ORIGIN_1, process.env.ALLOW_ORIGIN_2];
+  const allowOrigins = [process.env.ALLOW_ORIGIN_1, process.env.ALLOW_ORIGIN_2, process.env.ALLOW_ORIGIN_3];
   const origin = req.headers.origin;
   if(allowOrigins.includes(origin)) {
     return cors({
