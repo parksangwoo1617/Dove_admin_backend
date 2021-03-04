@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const Admin = require('../models/admin');
 
 const login = async(req, res) => {
-    const codes = req.body;
+    const codes = req.body.code;
     try {
         const compare = await Admin.findOne({
             code: codes
