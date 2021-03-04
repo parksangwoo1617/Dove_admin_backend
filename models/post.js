@@ -3,12 +3,15 @@ const Sequelize = require('sequelize');
 module.exports = class Post extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            
             id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true
+            },
+            adminId: {
+                type: Sequelize.STRING,
+                allowNull: true,
             },
             host: {
                 type: Sequelize.STRING(255),
@@ -51,7 +54,7 @@ module.exports = class Post extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Post.belongsTo(db.Admin, {
+        db.Admin.belongsTo(db.Post, {
             foreignKey: "adminId",
             targetKey: "code",
         });

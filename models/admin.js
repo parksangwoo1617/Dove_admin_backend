@@ -3,10 +3,6 @@ const Sequelize = require('sequelize');
 module.exports = class Admin extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            adminId: {
-                type: Sequelize.STRING,
-                allowNull: true,
-            },
             code: {
                 type: Sequelize.STRING(10),
                 allowNull: false,
@@ -23,7 +19,7 @@ module.exports = class Admin extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Admin.hasMany(db.Post, {
+        db.Post.hasMany(db.Admin, {
             foreignKey: "adminId",
             sourceKey: "code",
         });
