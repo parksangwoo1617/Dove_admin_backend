@@ -1,13 +1,15 @@
+const { noExtendLeft } = require('sequelize/types/lib/operators');
 const Post = require('../models/post');
 
 const getPost = async(req, res) => {
-    try {
-        await Post.find({}, function (posts) {
-            res.status(302).json({success:true, data: posts});
+    Post.findAll()
+        .then((posts) => {
+            res.json(posts);
         })
-    } catch(error) {
-        return res.json({success:false, message: err});
-    }
+        .catch((error) => {
+            console.error(error);
+            next(error);
+        })
 };
 
 const getPostDetail = async(req, res) => {
