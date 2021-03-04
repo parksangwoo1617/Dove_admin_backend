@@ -1,4 +1,3 @@
-const { noExtendLeft } = require('sequelize/types/lib/operators');
 const Post = require('../models/post');
 
 const getPost = async(req, res) => {
