@@ -28,7 +28,7 @@ sequelize.sync({ force: false })
   .catch(console.error);
 
   if(process.env.NODE_ENV === 'production') {
-    app.use(morgan('combined'));
+    app.use(morgan('dev'));
     app.use(helmet());
     app.use(hpp());
 } else { //development
