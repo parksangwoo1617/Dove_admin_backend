@@ -3,7 +3,7 @@ const Post = require('../models/post');
 const getPost = async(req, res) => {
     Post.findAll()
         .then((posts) => {
-            res.status(302).json(posts);
+            res.status(200).json(posts);
         })
         .catch((error) => {
             console.error(error);
