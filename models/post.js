@@ -54,7 +54,7 @@ module.exports = class Post extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Admin.belongsTo(db.Post, {
+        db.Admin.hasMany(db.Post, {
             foreignKey: "adminId",
             targetKey: "code",
         });
