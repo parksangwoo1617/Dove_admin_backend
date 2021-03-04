@@ -2,11 +2,11 @@ const Post = require('../models/post');
 
 const getPost = async(req, res) => {
     try {
-        let result = Post.findAll();
-        res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.status(200).end(result);
+        Post.find({}, function (posts) {
+            res.json({success:true, data: posts});
+        })
     } catch(error) {
-        return error;
+        return res.json({success:false, message: err});
     }
 };
 
