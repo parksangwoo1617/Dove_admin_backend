@@ -37,10 +37,6 @@ sequelize.sync({ force: false })
 
 app.use(cors());
 
-app.get('/*', function(req, res, next) {
-  res.json({message: 'This is CORS-enabled for all origins!'});
-});
-
 const redisClient = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const redisConnectionResult = redisClient.auth(process.env.REDIS_PASSWORD, err => {
   if(err) console.log(err, '에러가 발생했습니다');
