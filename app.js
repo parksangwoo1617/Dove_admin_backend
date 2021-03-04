@@ -35,10 +35,10 @@ sequelize.sync({ force: false })
   app.use(morgan('dev'));
 }
 
-app.all('/*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header('Access-Control-Allow-Headers', "X-Requested-With");
-  next();
+app.use(cors());
+
+app.get('/*', function(req, res, next) {
+  res.json({message: 'This is CORS-enabled for all origins!'});
 });
 
 const redisClient = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
