@@ -7,7 +7,7 @@ const getPost = async(req, res) => {
         })
         .catch((error) => {
             console.error(error);
-            next(error);
+            return error;
         })
 };
 
