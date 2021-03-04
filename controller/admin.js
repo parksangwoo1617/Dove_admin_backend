@@ -3,7 +3,7 @@ const Post = require('../models/post');
 const getPost = async(req, res) => {
     Post.findAll({
         limit: 4,
-        order: 'id desc',
+        order: [id, 'DESC'],
     })
         .then((posts) => {
             res.status(200).json(posts);
