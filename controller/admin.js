@@ -4,7 +4,7 @@ const getPost = async(req, res) => {
     try {
         let result = Post.findAll();
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.status(200).json(result);
+        res.status(200).end(result);
     } catch(error) {
         return error;
     }
