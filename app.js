@@ -35,18 +35,12 @@ sequelize.sync({ force: false })
   app.use(morgan('dev'));
 }
 
-app.use((req, res, next) => {
-  const allowOrigins = [process.env.ALLOW_ORIGIN_1, process.env.ALLOW_ORIGIN_2, process.env.ALLOW_ORIGIN_3];
-  const origin = req.headers.origin;
-  if(allowOrigins.includes(origin)) {
-    return cors({
-      origin: origin,
-      credentials: true,
-    })(req, res, next);
-  } else {
-    return next(); 
-  }
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Headers', "X-Requested-With");
+  next();
 });
+
 const redisClient = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const redisConnectionResult = redisClient.auth(process.env.REDIS_PASSWORD, err => {
   if(err) console.log(err, '에러가 발생했습니다');
