@@ -6,8 +6,8 @@ const login = async(req, res) => {
     const codes = req.body.code;
     try {
         const compare = await Admin.findOne({
-            code: codes
-        }); 
+            where: { code: codes },
+        });
         if(!compare) {
             return res.status(401).json({
                 code: 401,
