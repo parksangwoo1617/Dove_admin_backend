@@ -28,7 +28,7 @@ sequelize.sync({ force: false })
   .catch(console.error);
 
   if(process.env.NODE_ENV === 'production') {
-    app.use(morgan('dev'));
+    app.use(morgan('production'));
     app.use(helmet());
     app.use(hpp());
 } else { //development
@@ -69,7 +69,7 @@ if(process.env.NODE_ENV === 'production') {
 app.use(session(sessionOption));
 
 app.use('/user', indexRouter);
-app.use('/', errorHandler(getPost));
+app.use('/', adminRouter);
 app.use('/post', adminRouter);
 
 app.use((req, res, next) => {
