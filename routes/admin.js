@@ -13,7 +13,7 @@ const createPostRouter = errorHandler(adminController.createPost);
 const updatePostRouter = errorHandler(adminController.updatePost);
 const deletePostRouter = errorHandler(adminController.deletePost);
 
-router.get('/get/:id', getPostDetailRouter);
+router.get('/get/id', getPostDetailRouter);
 router.post('/post', createPostRouter);
 router.patch('/update/:id', verifyToken, checkAdmin, updatePostRouter);
 router.delete('/delete/:id', verifyToken, checkAdmin, deletePostRouter);
