@@ -17,8 +17,8 @@ const getPost = async(req, res) => {
 };
 
 const getPostDetail = async(req, res) => {
-    await Post.find({
-        where: { id: req.params.id }
+    await Post.findOne({
+        where: { id: req.params.id },
     })
         .then((post) => {
             res.setHeader('Content-Type', 'application/json; charset=utf-8');
