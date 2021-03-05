@@ -17,7 +17,7 @@ const getPost = async(req, res) => {
 };
 
 const getPostDetail = async(req, res) => {
-    await Post.findOne({
+    await Post.findAll({
         where: { id: req.params.id },
     })
         .then((post) => {
