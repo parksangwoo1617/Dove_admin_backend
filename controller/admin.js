@@ -37,7 +37,7 @@ const createPost = async(req, res) => {
         event_date: req.body.event_date,
         link: req.body.link,
     });
-    res.status(302);
+    res.status(200);
     res.end();
 }
 
@@ -56,7 +56,7 @@ const updatePost = async(req, res) => {
         } if(!post) {
             return res.status(401).json({ message: "Failed update Post"});
         }
-        res.status(302);
+        res.status(200);
         res.end();
     })
 }
@@ -68,7 +68,7 @@ const deletePost = async(req, res) => {
         } if(!post) {
             return res.status(401).json({ message: "Failed delete Post"});
         }
-        res.status(302);
+        res.status(200);
     });
 };
 

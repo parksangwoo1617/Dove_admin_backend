@@ -35,7 +35,7 @@ const login = async(req, res) => {
 };
 
 const logout = function(req, res) {
-    res.status(302).json({
+    res.status(200).json({
         message: "로그아웃 성공"
     });
 };
