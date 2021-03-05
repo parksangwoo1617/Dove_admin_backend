@@ -21,7 +21,6 @@ const getPostDetail = async(req, res) => {
         where: { id: req.params.id },
     })
         .then((post) => {
-            res.setHeader('Content-Type', 'application/json; charset=utf-8');
             res.status(200).json(post);
         })
         .catch((error) => {
