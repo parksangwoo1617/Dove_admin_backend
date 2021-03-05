@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 
 const getPost = async(req, res) => {
-    Post.findAll({
+    await Post.findAll({
         limit: 4,
         order: [
             ['created_at', 'DESC']
@@ -17,15 +17,17 @@ const getPost = async(req, res) => {
 };
 
 const getPostDetail = async(req, res) => {
-    try {
-        let result = await Post.findOne({
-            where: { id: req.params.id }
-        });
-        res.setHeader('Content-Type', 'application/json; charset=utf-8');
-        res.status(200).json(result);
-    } catch(error) {
-        return error;
-    }
+    await Post.findOne({
+        where: { id: req.params.id }
+    })
+        .then((post) => {
+            res.setHeader('Content-Type', 'application/json; charset=utf-8');
+            res.status(200).json(post);
+        })
+        .catch((error) => {
+            console.error(error);
+            return error;
+        })
 };
 
 const createPost = async(req, res) => {
