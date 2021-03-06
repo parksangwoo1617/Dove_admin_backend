@@ -2,7 +2,7 @@ const Post = require('../models/post');
 
 const getPost = async(req, res) => {
     try {
-        const posts = await findAll({
+        const posts = await Post.findAll({
             limit: 4,
             order: [
                 ['created_at', 'DESC']
