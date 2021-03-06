@@ -1,19 +1,18 @@
 const Post = require('../models/post');
 
 const getPost = async(req, res) => {
-    await Post.findAll({
-        limit: 4,
-        order: [
-            ['created_at', 'DESC']
-        ]
-    })
-        .then((posts) => {
-            res.status(200).json(posts);
+    try {
+        const posts = findAll({
+            limit: 4,
+            order: [
+                ['created_at', 'DESC']
+            ]
         })
-        .catch((error) => {
-            console.error(error);
-            return error;
-        })
+        res.status(200).json(posts);
+    } catch(error) {
+        console.error(error);
+        return error;
+    }
 };
 
 const getPostDetail = async(req, res) => {
@@ -23,7 +22,7 @@ const getPostDetail = async(req, res) => {
         })
         res.status(200).json(post);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return error;
     }
 };
