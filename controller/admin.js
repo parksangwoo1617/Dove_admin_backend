@@ -28,16 +28,21 @@ const getPostDetail = async(req, res) => {
 };
 
 const createPost = async(req, res) => {
-    await Post.create({
-        host: req.body.host,
-        title: req.body.title,
-        writer: req.body.writer,
-        description: req.body.description,
-        event_date: req.body.event_date,
-        link: req.body.link,
-    });
-    res.status(200);
-    res.end();
+    try {
+        await Post.create({
+            host: req.body.host,
+            title: req.body.title,
+            writer: req.body.writer,
+            description: req.body.description,
+            event_date: req.body.event_date,
+            link: req.body.link,
+        });
+        res.status(200);
+        res.end();
+    } catch(error) {
+        console.error(error);
+        return error;
+    }
 }
 
 const updatePost = async(req, res) => {
