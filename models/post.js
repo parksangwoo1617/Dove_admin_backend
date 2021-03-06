@@ -9,7 +9,7 @@ module.exports = class Post extends Sequelize.Model {
                 primaryKey: true,
                 autoIncrement: true
             },
-            adminId: {
+            admin_id: {
                 type: Sequelize.STRING,
                 allowNull: true,
             },

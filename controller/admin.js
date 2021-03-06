@@ -18,7 +18,7 @@ const getPost = async(req, res) => {
 
 const getPostDetail = async(req, res) => {
     await Post.findAll({
-        where: { id: req.params.id },
+        where: { id: req.params.id }
     })
         .then((post) => {
             res.status(200).json(post);
