@@ -46,23 +46,22 @@ const createPost = async(req, res) => {
 }
 
 const updatePost = async(req, res) => {
-    const response = {
-        host: req.boby.host,
-        title: req.body.title,
-        writer: req.body.writer,
-        description: req.body.description,
-        event_date: req.body.event_date,
-        link: req.body.link
-    };
-    await Post.findOneAndUpdate({ id: req.params.id }, response, function(err, post) {
-        if(err) {
-            return res.status(400).json({ message: "Failed update Post"});
-        } if(!post) {
-            return res.status(401).json({ message: "Failed update Post"});
-        }
+    try {
+        const response = {
+            host: req.boby.host,
+            title: req.body.title,
+            writer: req.body.writer,
+            description: req.body.description,
+            event_date: req.body.event_date,
+            link: req.body.link
+        };
+        await Post.findOneAndUpdate({ id: req.params.id }, response);
         res.status(200);
         res.end();
-    })
+    } catch(error) {//게시물이 존재하지 않을 때의 코드 추가 if(!post) {res.status(401).json({ message: "Failed"})}
+        console.error(error);
+        return error;
+    }
 }
 
 const deletePost = async(req, res) => {
