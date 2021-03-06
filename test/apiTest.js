@@ -43,7 +43,6 @@ describe('API Endpoint Test', () => {
     describe('POST request on /post/post with data', () => {
         it('should return 301', (done) => {
             let params = {
-                host: '마지막',
                 title: '테스트',
                 writer: 'sangwoo',
                 description: '면',

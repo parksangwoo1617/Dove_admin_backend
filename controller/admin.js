@@ -17,16 +17,15 @@ const getPost = async(req, res) => {
 };
 
 const getPostDetail = async(req, res) => {
-    await Post.findAll({
-        where: { id: req.params.id }
-    })
-        .then((post) => {
-            res.status(200).json(post);
+    try {
+        const post = await Post.findOne({
+            where: { id: req.params.id }
         })
-        .catch((error) => {
-            console.error(error);
-            return error;
-        })
+        res.status(200).json(post);
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
 };
 
 const createPost = async(req, res) => {
