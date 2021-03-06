@@ -55,7 +55,7 @@ module.exports = class Post extends Sequelize.Model {
 
     static associate(db) {
         db.Admin.hasMany(db.Post, {
-            foreignKey: "adminId",
+            foreignKey: "admin_id",
             targetKey: "code",
         });
     }
