@@ -54,11 +54,15 @@ const updatePost = async(req, res) => {
             description: req.body.description,
             event_date: req.body.event_date,
             link: req.body.link
-        };
-        await Post.findOneAndUpdate({ id: req.params.id }, response);
+        }
+        await Post.update({
+            response,
+        }, {
+            where: { id: req.params.id },
+        });
         res.status(200);
         res.end();
-    } catch(error) {//게시물이 존재하지 않을 때의 코드 추가 if(!post) {res.status(401).json({ message: "Failed"})}
+    } catch(error) {
         console.error(error);
         return error;
     }
@@ -66,7 +70,9 @@ const updatePost = async(req, res) => {
 
 const deletePost = async(req, res) => {
     try {
-        await Post.findOneAndRemove({ id: req.params.id });
+        await Post.destroy({
+            where: { id: req.params.id }
+        });
         res.status(200);
         res.end();
     } catch(error) {
