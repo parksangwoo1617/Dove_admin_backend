@@ -65,14 +65,14 @@ const updatePost = async(req, res) => {
 }
 
 const deletePost = async(req, res) => {
-    await Post.findOneAndRemove({ id: req.params.id }, function (err, post) {
-        if(err) {
-            return res.status(400).json({ message: "Failed delete Post"});
-        } if(!post) {
-            return res.status(401).json({ message: "Failed delete Post"});
-        }
+    try {
+        await Post.findOneAndRemove({ id: req.params.id });
         res.status(200);
-    });
+        res.end();
+    } catch(error) {
+        console.error(error);
+        return error;
+    }
 };
 
 module.exports = {
