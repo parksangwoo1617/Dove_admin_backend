@@ -43,17 +43,17 @@ describe('API Endpoint Test', () => {
     describe('POST request on /post/post with data', () => {
         it('should return 301', (done) => {
             let params = {
-                title: '테스트',
+                title: 'title',
                 writer: 'sangwoo',
-                description: '면',
-                event_date: '2020-02-19',
-                link: '좋겠다'
+                description: 'description',
+                event_date: '2020-03-08',
+                link: 'link'
             };
             chai.request(server) 
                 .post('/post/post')
                 .send(params)
                 .end((err, res) => {
-                    res.should.have.status(302);
+                    res.should.have.status(200);
                     done();
                 });
         });
@@ -107,7 +107,7 @@ describe('API Endpoint Test', () => {
             chai.request(server)
                 .get('/user/logout')
                 .end((err, res) => {
-                    res.should.have.status(302);
+                    res.should.have.status(200);
                 });
         });
     });
