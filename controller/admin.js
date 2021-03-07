@@ -57,7 +57,10 @@ const updatePost = async(req, res) => {
         }, {
             where: { id: req.params.id },
         });
-        res.json(result);
+        res.json({
+            message: "success",
+            result
+        });
         res.status(200);
         res.end();
     } catch(error) {
