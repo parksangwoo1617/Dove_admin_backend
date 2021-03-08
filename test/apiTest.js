@@ -43,11 +43,11 @@ describe('API Endpoint Test', () => {
     describe('POST request on /post/post with data', () => {
         it('should return 301', (done) => {
             let params = {
-                title: 'title',
-                writer: 'sangwoo',
-                description: 'description',
+                title: 'title2',
+                writer: 'sangwoo2',
+                description: 'description2',
                 event_date: '2020-03-08',
-                link: 'link'
+                link: 'link2'
             };
             chai.request(server) 
                 .post('/post/post')
