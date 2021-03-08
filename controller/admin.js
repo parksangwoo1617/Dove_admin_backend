@@ -7,9 +7,7 @@ const getPost = async(req, res) => {
             order: [
                 ['created_at', 'DESC']
             ],
-            offset: [
-                [ req.query.size * req.query.page ]
-            ],
+            offset: req.query.size * req.query.page,
         })
         res.status(200).json(posts);
     } catch(error) {
