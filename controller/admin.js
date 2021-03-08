@@ -61,8 +61,6 @@ const updatePost = async(req, res) => {
             message: "success",
             result
         });
-        res.status(200);
-        res.end();
     } catch(error) {
         console.error(error);
         return error;
