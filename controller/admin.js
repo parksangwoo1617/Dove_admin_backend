@@ -48,12 +48,7 @@ const createPost = async(req, res) => {
 const updatePost = async(req, res) => {
     try {
         const result = await Post.update({
-            host: req.body.host,
-            title: req.body.title,
-            writer: req.body.writer,
-            description: req.body.description,
-            event_date: req.body.event_date,
-            link: req.body.link,
+            host: req.body.host
         }, {
             where: { id: req.params.id },
         });
