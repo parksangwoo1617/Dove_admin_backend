@@ -3,10 +3,13 @@ const Post = require('../models/post');
 const getPost = async(req, res) => {
     try {
         const posts = await Post.findAll({
-            limit: 4,
+            limit: req.query.size,
             order: [
                 ['created_at', 'DESC']
-            ]
+            ],
+            offset: [
+                [ req.query.size * req.query.page ]
+            ],
         })
         res.status(200).json(posts);
     } catch(error) {
@@ -61,6 +64,8 @@ const updatePost = async(req, res) => {
             message: "success",
             result
         });
+        res.status(200);
+        res.end();
     } catch(error) {
         console.error(error);
         return error;
