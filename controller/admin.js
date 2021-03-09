@@ -2,17 +2,15 @@ const Post = require('../models/post');
 
 const getPost = async(req, res) => {
     try {
-        const size = req.query.size;
-        const page = req.query.page;
-        const offset = size * page;
+        const size = Number(req.query.size);
+        const offset = size * req.query.page;
 
         const posts = await Post.findAll({
+            attributes: ['id', 'host', 'title', 'event_date'],
+            order: [['created_at', 'DESC']],
             limit: size,
-            order: [
-                ['created_at', 'DESC']
-            ],
             offset: offset,
-        })
+        });
         res.status(200).json(posts);
     } catch(error) {
         console.error(error);

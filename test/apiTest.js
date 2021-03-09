@@ -23,7 +23,7 @@ describe('API Endpoint Test', () => {
     describe('GET request on /post/get', () => {
         it('should return post', (done) => {
             chai.request(server)
-                .get('/post/get')
+                .get('/?size=4&page=0')
                 .end((err, res) => {
                     res.should.have.status(200);
                     done();
