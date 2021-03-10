@@ -6,8 +6,7 @@ const getPost = async(req, res) => {
         const offset = size * req.query.page;
 
         const id = await Post.max('id');
-        const totalPages = id / size;
-        console.log(totalPages);
+        let totalPages = Math.floor(id / size);
 
         const posts = await Post.findAll({
             attributes: ['id', 'host', 'title', 'event_date', 'created_at'],
@@ -15,8 +14,7 @@ const getPost = async(req, res) => {
             limit: size,
             offset: offset,
         });
-        res.send(totalPages);
-        res.status(200).json(posts);
+        res.status(200).json(posts).end(totalPages);
     } catch(error) {
         console.error(error);
         return error;
