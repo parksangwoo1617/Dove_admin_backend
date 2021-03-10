@@ -4,7 +4,14 @@ const getPost = async(req, res) => {
     try {
         const size = Number(req.query.size);
         const offset = size * req.query.page;
-
+        const want = await Post.findAll({
+            attributes: ['id'],
+            order: [['created_at', 'DESC']],
+            limit: 1,
+        });
+        console.log(typeof want.id);
+        let tmp = want.id / size;
+        console.log(tmp);
         const posts = await Post.findAll({
             attributes: ['id', 'host', 'title', 'event_date', 'created_at'],
             order: [['created_at', 'DESC']],
