@@ -6,7 +6,7 @@ const getPost = async(req, res) => {
         const offset = size * req.query.page;
 
         const posts = await Post.findAll({
-            attributes: ['id', 'host', 'title', 'event_date'],
+            attributes: ['id', 'host', 'title', 'event_date', 'created_at'],
             order: [['created_at', 'DESC']],
             limit: size,
             offset: offset,
